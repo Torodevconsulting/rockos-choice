@@ -18,33 +18,49 @@ export function HeroSection() {
       {/* ── Editorial hero ─────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-6 pt-12 lg:pt-16 pb-12 lg:pb-20">
 
-        {/* Headline — TrendTrunk style */}
-        <h1 className="font-heading font-black leading-[0.9] tracking-tight select-none">
+        {/* Headline + Rocko circle */}
+        <div className="flex items-center justify-between gap-8">
 
-          {/* Row 1 */}
-          <div className="flex items-baseline flex-wrap gap-x-6 lg:gap-x-10">
-            <span className="text-6xl md:text-8xl lg:text-[9rem] text-foreground">
-              Shop
-            </span>
-            <span className="text-6xl md:text-8xl lg:text-[9rem] text-primary leading-none">
-              —
-            </span>
-            <span className="text-6xl md:text-8xl lg:text-[9rem] text-foreground">
-              Smart
-            </span>
+          {/* Left: headline */}
+          <h1 className="font-heading font-black leading-[0.9] tracking-tight select-none flex-1">
+
+            {/* Row 1 */}
+            <div className="flex items-baseline flex-wrap gap-x-6 lg:gap-x-10">
+              <span className="text-6xl md:text-8xl lg:text-[9rem] text-foreground">
+                Shop
+              </span>
+              <span className="text-6xl md:text-8xl lg:text-[9rem] text-primary leading-none">
+                —
+              </span>
+              <span className="text-6xl md:text-8xl lg:text-[9rem] text-foreground">
+                Smart
+              </span>
+            </div>
+
+            {/* Row 2 */}
+            <div className="flex items-end flex-wrap gap-x-6 lg:gap-x-10 mt-2 lg:mt-4">
+              <span className="text-6xl md:text-8xl lg:text-[9rem] text-foreground">
+                Live
+              </span>
+
+              <span className="text-6xl md:text-8xl lg:text-[9rem] text-foreground">
+                Better<span className="text-primary">.</span>
+              </span>
+            </div>
+          </h1>
+
+          {/* Right: Rocko in orange circle */}
+          <div className="hidden lg:flex shrink-0 items-center justify-center w-64 h-64 xl:w-80 xl:h-80 rounded-full border-[6px] border-primary overflow-hidden bg-white">
+            <Image
+              src="/rockoschoiuce.png"
+              alt="Rocko"
+              width={320}
+              height={320}
+              className="object-cover w-full h-full"
+            />
           </div>
 
-          {/* Row 2 */}
-          <div className="flex items-end flex-wrap gap-x-6 lg:gap-x-10 mt-2 lg:mt-4">
-            <span className="text-6xl md:text-8xl lg:text-[9rem] text-foreground">
-              Live
-            </span>
-
-            <span className="text-6xl md:text-8xl lg:text-[9rem] text-foreground">
-              Better<span className="text-primary">.</span>
-            </span>
-          </div>
-        </h1>
+        </div>
 
         {/* Sub-row: tag + CTAs */}
         <div className="mt-10 lg:mt-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
