@@ -8,6 +8,7 @@ export const products: Product[] = [
     description:
       "5-level resistance bands for full-body training at home or the gym. Durable, portable, and perfect for any fitness level.",
     price: "$12.99",
+    originalPrice: "$19.99",
     image:
       "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=600&q=80",
     category: "fitness",
@@ -48,6 +49,7 @@ export const products: Product[] = [
     description:
       "Adjustable cable jump rope with ball-bearing handles for smooth, fast rotation. Ideal for cardio and HIIT.",
     price: "$9.99",
+    originalPrice: "$14.99",
     image:
       "https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=600&q=80",
     category: "fitness",
@@ -76,6 +78,7 @@ export const products: Product[] = [
     description:
       "Programmable 4L feeder with portion control and a built-in voice recorder. Feed on schedule, every time.",
     price: "$39.99",
+    originalPrice: "$54.99",
     image:
       "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=600&q=80",
     category: "pets",
@@ -117,6 +120,7 @@ export const products: Product[] = [
     description:
       "Vitamin C serum + hydrating moisturizer set for a brighter, smoother complexion. Dermatologist-approved.",
     price: "$34.99",
+    originalPrice: "$49.99",
     image:
       "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80",
     category: "women",
@@ -175,4 +179,8 @@ export function getFeaturedProduct(): Product | undefined {
 
 export function getTopProducts(count = 9): Product[] {
   return products.slice(0, count)
+}
+
+export function getProductById(id: string): Product | undefined {
+  return products.find((p) => p.id === id)
 }

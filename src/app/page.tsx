@@ -9,7 +9,8 @@ import { categories } from "@/data/categories"
 
 export default function HomePage() {
   const featuredProduct = getFeaturedProduct()
-  const topProducts = getTopProducts(9)
+  const newArrivals = getTopProducts(8)
+  const bestSellers = getTopProducts(12).slice(8)
 
   return (
     <>
@@ -38,18 +39,26 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* All picks */}
-        <section id="picks" className="max-w-6xl mx-auto px-4 pb-16">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="font-heading font-black text-2xl text-foreground">
-              All Picks 🐾
-            </h2>
-            <span className="text-sm text-muted-foreground font-semibold">
-              {topProducts.length} products
-            </span>
-          </div>
-          <ProductGrid products={topProducts} />
+        {/* New Arrivals */}
+        <section id="picks" className="max-w-6xl mx-auto px-4 pb-10">
+          <ProductGrid
+            products={newArrivals}
+            title="New Arrivals"
+            viewAllHref="/#picks"
+            columns={4}
+          />
         </section>
+
+        {/* Best Sellers */}
+        {bestSellers.length > 0 && (
+          <section className="max-w-6xl mx-auto px-4 pb-16">
+            <ProductGrid
+              products={bestSellers}
+              title="Best Sellers"
+              columns={4}
+            />
+          </section>
+        )}
 
         {/* Social CTA banner */}
         <section className="bg-foreground text-white py-14 px-4">

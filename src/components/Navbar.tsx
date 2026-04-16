@@ -10,6 +10,7 @@ const navLinks = [
   { href: "/fitness", label: "Fitness" },
   { href: "/pets", label: "Pets" },
   { href: "/women", label: "Women" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About Rocko" },
 ]
 
