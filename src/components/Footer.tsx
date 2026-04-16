@@ -79,9 +79,14 @@ export function Footer() {
             you purchase through our links — at no extra cost to you. This helps
             keep Rocko in treats. 🦴
           </p>
-          <p className="text-xs text-white/30 mt-2">
-            © {new Date().getFullYear()} Rocko&apos;s Choice. All rights reserved.
-          </p>
+          <div className="flex items-center justify-between mt-2">
+            <p className="text-xs text-white/30">
+              © {new Date().getFullYear()} torodevelopment. All rights reserved.
+            </p>
+            <p className="text-xs text-white/30">
+              Built with precision. Deployed with care.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
