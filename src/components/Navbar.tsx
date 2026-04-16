@@ -19,7 +19,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border/60">
-      <nav className="max-w-7xl mx-auto px-6 h-18 grid grid-cols-3 items-center">
+      <nav className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between md:grid md:grid-cols-3">
 
         {/* Left: Logo */}
         <Link
