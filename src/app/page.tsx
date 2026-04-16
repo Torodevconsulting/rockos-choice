@@ -1,65 +1,86 @@
-import Image from "next/image";
+import Link from "next/link"
+import { Navbar } from "@/components/Navbar"
+import { Footer } from "@/components/Footer"
+import { HeroSection } from "@/components/HeroSection"
+import { FeaturedProduct } from "@/components/FeaturedProduct"
+import { ProductGrid } from "@/components/ProductGrid"
+import { getFeaturedProduct, getTopProducts } from "@/data/products"
+import { categories } from "@/data/categories"
 
-export default function Home() {
+export default function HomePage() {
+  const featuredProduct = getFeaturedProduct()
+  const topProducts = getTopProducts(9)
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Navbar />
+      <main className="flex-1">
+        <HeroSection />
+
+        {/* Featured Product */}
+        {featuredProduct && <FeaturedProduct product={featuredProduct} />}
+
+        {/* Category shortcuts */}
+        <section className="max-w-6xl mx-auto px-4 py-6">
+          <div className="grid grid-cols-3 gap-3">
+            {categories.map((cat) => (
+              <Link
+                key={cat.slug}
+                href={`/${cat.slug}`}
+                className="flex flex-col items-center justify-center gap-2 bg-white border border-border rounded-2xl p-4 hover:border-primary hover:bg-secondary transition-colors group"
+              >
+                <span className="text-3xl">{cat.emoji}</span>
+                <span className="font-heading font-bold text-sm text-foreground group-hover:text-primary transition-colors">
+                  {cat.label}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* All picks */}
+        <section id="picks" className="max-w-6xl mx-auto px-4 pb-16">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="font-heading font-black text-2xl text-foreground">
+              All Picks 🐾
+            </h2>
+            <span className="text-sm text-muted-foreground font-semibold">
+              {topProducts.length} products
+            </span>
+          </div>
+          <ProductGrid products={topProducts} />
+        </section>
+
+        {/* Social CTA banner */}
+        <section className="bg-foreground text-white py-14 px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="text-4xl mb-4">🐾</div>
+            <h2 className="font-heading font-black text-3xl mb-3">
+              Follow Rocko for Daily Finds
+            </h2>
+            <p className="text-white/60 mb-6">
+              New picks every week. Follow on Instagram and TikTok for
+              behind-the-scenes of the curation process — yes, Rocko is very
+              involved.
+            </p>
+            <div className="flex gap-3 justify-center flex-wrap">
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-full hover:bg-primary/90 transition-colors"
+              >
+                📸 Follow on Instagram
+              </a>
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 bg-white/10 text-white font-bold px-6 py-3 rounded-full hover:bg-white/20 transition-colors"
+              >
+                🎵 Follow on TikTok
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
-  );
+      <Footer />
+    </>
+  )
 }
