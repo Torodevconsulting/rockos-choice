@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rocko's Choice
+
+A modern affiliate marketing website built with Next.js 16, featuring Rocko the Jack Russell terrier as the mascot. The site curates and recommends products across pets, fitness, and lifestyle categories, driving revenue through affiliate links.
+
+---
+
+## Overview
+
+Rocko's Choice is a product recommendation platform where every pick is "Rocko-approved." Visitors can browse curated products by category, read blog posts, and click through to purchase via affiliate links (Amazon and others). The site is designed to feel personal and trustworthy — like getting a recommendation from a friend (or their dog).
+
+### Categories
+
+- **Fitness** — workout gear, equipment, and accessories
+- **Pets** — toys, food, accessories, and everything pet-related
+- **Women** — style, beauty, and everyday lifestyle finds
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| UI Components | shadcn/ui, Radix UI |
+| State Management | Zustand |
+| Data Fetching | TanStack Query v5 |
+| Forms | React Hook Form + Zod |
+| Auth | NextAuth v5 |
+| Database ORM | Prisma v7 (PostgreSQL) |
+| Package Manager | pnpm |
+| Deployment | Vercel |
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/                  # Next.js App Router pages
+│   ├── (auth)/           # Login / registration routes
+│   ├── (dashboard)/      # Admin dashboard
+│   ├── about/            # About page
+│   ├── blog/             # Blog listing and posts
+│   ├── fitness/          # Fitness category page
+│   ├── pets/             # Pets category page
+│   ├── products/         # All products page
+│   ├── women/            # Women category page
+│   └── api/              # API routes
+├── components/           # Shared UI components
+│   ├── Navbar.tsx
+│   ├── Footer.tsx
+│   ├── HeroSection.tsx
+│   ├── ProductCard.tsx
+│   ├── ProductGrid.tsx
+│   ├── ProductBuyBox.tsx
+│   ├── FeaturedProduct.tsx
+│   ├── CategoryBanner.tsx
+│   ├── ScrollToTop.tsx
+│   ├── shared/
+│   └── ui/
+├── data/                 # Static data (products, categories, posts)
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility functions and configs
+├── store/                # Zustand stores
+├── types/                # TypeScript type definitions
+└── validators/           # Zod schemas
+prisma/
+└── schema.prisma         # Database schema
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- pnpm
+- A PostgreSQL database
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Set up environment variables
+cp .env.example .env
+# Fill in your DATABASE_URL and other secrets in .env
+
+# Run database migrations
+pnpm prisma migrate dev
+
+# Start the development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project is deployed on Vercel. Push to the `master` branch to trigger a production deployment.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Deploy manually via Vercel CLI
+vercel --prod
+```
